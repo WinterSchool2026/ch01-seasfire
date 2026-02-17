@@ -1,4 +1,4 @@
-# SeasFire: Subseasonal to Seasonal Global Wildfire Forecasting
+# SeasFire: Subseasonal to Seasonal Global Wildfire Danger Forecasting
 
 Wildfires are a growing global threat, impacting ecosystems, economies, and human livelihoods. 
 While short-term wildfire predictions often leverage local weather conditions, forecasting fire 
@@ -13,7 +13,7 @@ Participants are invited to explore the dataset and develop data-driven models t
 
 ## Scientific Context
 
-Subseasonal (2–6 weeks) and seasonal (1–6 months) wildfire forecasting requires integrating:
+Subseasonal and seasonal wildfire danger forecasting requires integrating:
 
 - Large-scale climate drivers  
 - Land surface and vegetation conditions  
