@@ -9,6 +9,18 @@ import numpy as np
 import xarray as xr
 from torch.utils.data import Dataset
 import torch
+from zarr.storage import ZipStore
+
+def _open_zarr(path):
+    """Open a Zarr store from a .zip or a directory."""
+    if path.endswith(".zip"):
+        store = ZipStore(path, mode="r")
+    else:
+        store = path
+    try:
+        return xr.open_zarr(store, consolidated=True)
+    except Exception:
+        return xr.open_zarr(store, consolidated=False)
 
 
 # ---------------------------------------------------------------------------
@@ -133,9 +145,9 @@ def load_datasets(
         keep_vars = ["gwis_ba", "gfed_region", "ndvi", "pop_dens", "lsm", "area"]
 
     print(f"Loading local dataset from {ds_path} ...")
-    ds = xr.open_zarr(ds_path)
+    ds = _open_zarr(ds_path)
     print(f"Loading global dataset from {global_ds_path} ...")
-    global_ds = xr.open_zarr(global_ds_path)
+    global_ds = _open_zarr(global_ds_path)
 
     # Fix SST artefact
     if "sst" in ds:
@@ -148,16 +160,16 @@ def load_datasets(
         ds = ds.sel(time=ds.time.dt.year.isin(selected_years))
         global_ds = global_ds.sel(time=global_ds.time.dt.year.isin(selected_years))
 
-    # Log transform
-    for var in log_transform_vars:
-        ds[var] = np.log(ds[var] + 1)
-        global_ds[var] = np.log(global_ds[var] + 1)
-
     # Clipping
     if clip_vars:
         for var, (lo, hi) in clip_vars.items():
             ds[var] = ds[var].clip(min=lo, max=hi)
             global_ds[var] = global_ds[var].clip(min=lo, max=hi)
+            
+    # Log transform
+    for var in log_transform_vars:
+        ds[var] = np.log(ds[var] + 1)
+        global_ds[var] = np.log(global_ds[var] + 1)
 
     # Z-score normalisation of input vars
     for var in input_vars:
