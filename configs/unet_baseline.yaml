@@ -1,0 +1,134 @@
+# SeasFire Challenge — UNet Baseline Config
+# Designed for Google Colab with the 1° datacube for development.
+# lightning.pytorch >= 2.2
+
+seed_everything: 42
+
+# ============================
+# Dataset / DataModule
+# ============================
+data:
+  class_path: src.data.seasfire_datamodule.SeasFireDataModule
+  init_args:
+    # Paths — set these in the notebook before training
+    ds_path: null       # will be set to path_025deg or path_1deg
+    ds_path_global: null  # will be set to path_1deg
+
+    # Variables
+    input_vars:
+      - lst_day
+      - mslp
+      - ndvi
+      - pop_dens
+      - rel_hum
+      - spei_1
+      - ssrd
+      - sst
+      - swvl1
+      - t2m_mean
+      - tp
+      - vpd
+    positional_vars:
+      - cos_lat
+      - sin_lat
+      - cos_lon
+      - sin_lon
+    log_transform_vars:
+      - tp
+      - pop_dens
+    oci_vars:
+      - oci_censo
+      - oci_ea
+      - oci_epo
+      - oci_ao
+      - oci_nao
+      - oci_nina34_anom
+      - oci_pdo
+      - oci_pna
+      - oci_soi
+      - oci_wp
+    oci_lag: 10
+    clip_vars:
+      spei_1: [-5, 5]
+
+    # Target
+    target: gwis_ba
+    target_shift: 1
+    min_lead_time: 1
+    max_lead_time: 1
+
+    # Data loading
+    batch_size: 16
+    num_workers: 2
+    pin_memory: true
+    debug: false
+
+    # Shapes
+    local_lag: 1
+    global_lag: 1
+    input_local_shape: [1, 80, 80]
+    patch_local_shape: [1, 16, 16]
+    patch_global_shape: [1, 30, 30]
+
+# ============================
+# Model
+# ============================
+model:
+  class_path: src.models.unet_module.plUNET
+  init_args:
+    lr: 0.001
+    encoder: efficientnet-b1
+    input_vars:
+      - lst_day
+      - mslp
+      - ndvi
+      - pop_dens
+      - rel_hum
+      - spei_1
+      - ssrd
+      - sst
+      - swvl1
+      - t2m_mean
+      - tp
+      - vpd
+    positional_vars:
+      - cos_lat
+      - sin_lat
+      - cos_lon
+      - sin_lon
+    weight_decay: 0.000001
+    loss: ce
+    sea_masked: false
+
+# ============================
+# Trainer
+# ============================
+trainer:
+  default_root_dir: ./outputs/unet
+  min_epochs: 1
+  max_epochs: 10
+  accelerator: auto
+  devices: 1
+  num_sanity_val_steps: 0
+  check_val_every_n_epoch: 1
+  deterministic: false
+
+  logger:
+    class_path: lightning.pytorch.loggers.CSVLogger
+    init_args:
+      save_dir: ./outputs/unet/logs
+      name: seasfire_unet
+
+  callbacks:
+    - class_path: lightning.pytorch.callbacks.ModelCheckpoint
+      init_args:
+        dirpath: ./outputs/unet/checkpoints
+        filename: "epoch_{epoch:03d}"
+        monitor: val/loss
+        mode: min
+        save_last: true
+        auto_insert_metric_name: false
+        every_n_epochs: 1
+        save_top_k: 1
+    - class_path: lightning.pytorch.callbacks.RichProgressBar
+    - class_path: src.callbacks.logging_callbacks.PrintMetricsCallback
