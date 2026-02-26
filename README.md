@@ -59,4 +59,4 @@ All experiments are designed to run using **Google Colab**.
 
 Click the badge below to launch the baseline notebook directly in Google Colab:
 
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/<ORG_NAME>/<REPO_NAME>/blob/main/notebooks/baseline.ipynb)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1CiAStAEdtdMqAoTbAZh-3ra9T9UtwXh5#scrollTo=IySoU9nTBdjj)
