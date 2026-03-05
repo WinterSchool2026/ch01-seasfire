@@ -9,20 +9,12 @@ This challenge focuses on **subseasonal to seasonal wildfire forecasting** using
 
 Participants are invited to explore the dataset and develop data-driven models to improve our understanding and prediction of wildfire dynamics at extended lead times.
 
----
-
-## Scientific Context
-
-Subseasonal and seasonal wildfire danger forecasting requires integrating:
-
-- Large-scale climate drivers  
-- Land surface and vegetation conditions  
-- Meteorological variability  
-- Teleconnection patterns  
-- Anthropogenic influences  
-
-Unlike short-term fire weather prediction, long-lead forecasting must capture slow-varying Earth system processes and cross-scale interactions.
-
+## Recommended Reading Material
+- [SeasFire Datacube: A Dataset for Seasonal Wildfire Prediction](https://www.nature.com/articles/s41597-025-04546-3)
+- [TeleViT: Teleconnection-Driven Transformers for Subseasonal-to-Seasonal Wildfire Forecasting (ICCV 2023 Workshop)](https://openaccess.thecvf.com/content/ICCV2023W/AIHADR/papers/Prapas_TeleViT_Teleconnection-Driven_Transformers_Improve_Subseasonal_to_Seasonal_Wildfire_Forecasting_ICCVW_2023_paper.pdf)
+- [TeleViT: Teleconnection-Aware Vision Transformer for Subseasonal-to-Seasonal Wildfire Forecasting](https://arxiv.org/abs/2512.00089)
+- [FireCastNet: Deep Learning for Wildfire Forecasting](https://www.nature.com/articles/s41598-025-30645-7)
+- [U-Net Implementation for Spatiotemporal Prediction](https://arxiv.org/pdf/2211.00534)
 ---
 
 ## Challenge Objectives
@@ -30,32 +22,34 @@ Unlike short-term fire weather prediction, long-lead forecasting must capture sl
 Participants are encouraged to investigate one or more of the following research directions:
 
 ### 1. Regional & Regime-Specific Predictability
-- How does predictor importance vary across:
-  - Biomes
-  - Climate zones
-  - Fire regimes?
-- Are certain regions more predictable at longer lead times?
 
-### 2. Climate Teleconnections & Large-Scale Drivers
-- Quantify the influence of:
-  - ENSO-like variability
-  - Atmospheric circulation patterns
-  - Ocean–atmosphere coupling
-- Do teleconnections enhance seasonal wildfire predictability?
+Wildfire predictability varies substantially across ecosystems and climate regimes. This track investigates where and why forecasting works better.
 
-### 3. Advanced Machine Learning & Deep Learning Approaches
-- Transformer-based architectures  
-- CNN–LSTM hybrids  
+Possible research questions:
 
-Participants are encouraged to compare statistical baselines with modern deep learning approaches.
+How does predictor importance vary across:
+- Biomes (e.g., boreal forest, Mediterranean ecosystems, savannas)
+- Climate zones (arid, temperate, tropical)
+- Which regions exhibit stable predictability at longer lead times (e.g., 4–12 weeks)?
+- Can we identify predictability regimes (fuel-limited vs climate-driven systems)?
+
+Example approaches:
+1. Regional model training/comparison
+2. Feature attribution / SHAP analysis
+
+### 2. Advanced Machine Learning & Deep Learning Approaches
+
+This track explores new modeling strategies for spatiotemporal wildfire prediction.
+
+Possible research questions:
+
+- How can temporal-only predictors (e.g., OCI time series) be integrated into spatial models such as U-Net?
 
 ---
 
-## Getting Started
+## Jump in the notebook
 
 All experiments are designed to run using **Google Colab**.
-
-### Step 1: Open the Baseline Notebook
 
 Click the badge below to launch the baseline notebook directly in Google Colab:
 
