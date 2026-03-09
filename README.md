@@ -7,7 +7,7 @@ vegetation dynamics, land surface processes, and human activities.
 
 This challenge focuses on **subseasonal to seasonal wildfire forecasting** using the **SeasFire datacube** — a comprehensive spatiotemporal dataset designed for long-lead wildfire modeling.
 
-Participants are invited to explore the dataset and develop data-driven models to improve our understanding and prediction of wildfire dynamics at extended lead times.
+You are invited to explore the dataset and develop data-driven models to improve our understanding and prediction of wildfire dynamics at extended lead times.
 
 ## Recommended Reading Material
 - [SeasFire Datacube: A Dataset for Seasonal Wildfire Prediction](https://www.nature.com/articles/s41597-025-04546-3)
@@ -17,9 +17,23 @@ Participants are invited to explore the dataset and develop data-driven models t
 - [U-Net Implementation for Spatiotemporal Prediction](https://arxiv.org/pdf/2211.00534)
 ---
 
+## Jump in the notebook
+
+All experiments are designed to run using **Google Colab**.
+
+Click the badge below to launch the baseline notebook directly in Google Colab: 
+
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1CiAStAEdtdMqAoTbAZh-3ra9T9UtwXh5#scrollTo=IySoU9nTBdjj)
+
+## Understanding the problem
+I prepared a presentation to introduce you to the problem specifics:
+[Open the presentation](https://github.com/WinterSchool2026/ch01-seasfire/slides/presentation.pdf)
+
+---
+
 ## Challenge Objectives
 
-Participants are encouraged to investigate one or more of the following research directions:
+You are encouraged to investigate one or more of the following research directions:
 
 ### 1. Regional & Regime-Specific Predictability
 
@@ -44,13 +58,3 @@ This track explores new modeling strategies for spatiotemporal wildfire predicti
 Possible research questions:
 
 - How can temporal-only predictors (e.g., OCI time series) be integrated into spatial models such as U-Net?
-
----
-
-## Jump in the notebook
-
-All experiments are designed to run using **Google Colab**.
-
-Click the badge below to launch the baseline notebook directly in Google Colab:
-
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1CiAStAEdtdMqAoTbAZh-3ra9T9UtwXh5#scrollTo=IySoU9nTBdjj)
