@@ -25,17 +25,20 @@ Click the badge below to launch the baseline notebook directly in Google Colab:
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1CiAStAEdtdMqAoTbAZh-3ra9T9UtwXh5#scrollTo=IySoU9nTBdjj)
 
-## Understanding the problem
-I prepared a presentation to introduce you to the problem specifics:
-[Open the presentation](https://github.com/WinterSchool2026/ch01-seasfire/slides/presentation.pdf)
-
 ---
 
 ## Challenge Objectives
 
-You are encouraged to investigate one or more of the following research directions:
+You are encouraged to investigate one (or more) of the following research directions:
 
-### 1. Regional & Regime-Specific Predictability
+### 1. Problem Formulation
+It would make sense to move from a classification task to a more informative task.
+
+Possible research questions:
+- What would be the different approaches for building a model for that task?
+- What are some metrics that are important for this formulation?
+
+### 2. Sources of Regional Predictability
 
 Wildfire predictability varies substantially across ecosystems and climate regimes. This track investigates where and why forecasting works better.
 
@@ -44,14 +47,10 @@ Possible research questions:
 How does predictor importance vary across:
 - Biomes (e.g., boreal forest, Mediterranean ecosystems, savannas)
 - Climate zones (arid, temperate, tropical)
-- Which regions exhibit stable predictability at longer lead times (e.g., 4–12 weeks)?
+- Which regions exhibit stable predictability at longer lead times?
 - Can we identify predictability regimes (fuel-limited vs climate-driven systems)?
 
-Example approaches:
-1. Regional model training/comparison
-2. Feature attribution / SHAP analysis
-
-### 2. Advanced Machine Learning & Deep Learning Approaches
+### 3. Advanced Machine Learning & Deep Learning Approaches
 
 This track explores new modeling strategies for spatiotemporal wildfire prediction.
 
